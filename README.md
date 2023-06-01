@@ -10,23 +10,18 @@ El proyecto se basa en el análisis del conjunto de datos obtenido en la Prácti
 
 ### Requerimientos
 
-* Describe any prerequisites, libraries, OS version, etc., needed before installing program.
-* ex. Windows 10
+El análisis de datos se ha realizado con R Studio, por lo que es indispensable tener instalado este programa (y el programa base R) para la ejecución del código.
 
-### Installing
-
-* How/where to download your program
-* Any modifications needed to be made to files/folders
-
-### Executing program
-
-* How to run the program
-* Step-by-step bullets
-```
-code blocks for commands
-```
+En adición, en el código se hacen uso de diversas librerías. En el código se ha incorporado en las primeras líneas una sección donde se comprueba si estas están instaladas en el programa y, en caso de que no, se descargarán e instalarán de manera automática.
 
 
+### Instalación
+
+* R studio: https://posit.co/download/rstudio-desktop/ 
+
+### Ejecución del programa
+
+Para la ejecución del código se debe abrir el fichero "codigo_r" en RStudio y hacer click en el botón "Run".
 
 ## Autores/as
 
