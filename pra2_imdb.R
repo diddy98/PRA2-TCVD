@@ -4,7 +4,7 @@
 
 # Carga de librerías
 
-librerias <- c('tidyverse', 'ggplot2', 'dplyr', 'corrplot', 'cowplot', 'gridExtra')
+librerias <- c('tidyverse', 'ggplot2', 'dplyr', 'corrplot', 'cowplot', 'gridExtra', 'car')
 
 lapply(librerias, function(package) {if (!require(package, character.only = TRUE)) {install.packages(package, dependencies = TRUE); library(package, character.only = TRUE)}})
 
@@ -200,7 +200,7 @@ ggplot(data, aes(x = Meta_score, y = Runtime)) +
 # ANÁLISIS
 
 # Crea un loop para generar un diagrama de dispersión por cada variable numérica
-for (variable in names(data)[variables_numericas]) {
+for (variable in names(num_vars)) {
   # Crea el diagrama de dispersión
   plot(data[[variable]], data$IMDB_Rating, 
        main = paste("Diagrama de dispersión:", variable),
@@ -214,8 +214,8 @@ for (variable in names(data)) {
     # Realiza la prueba de normalidad (Shapiro-Wilk) para la variable actual
     normality_test <- shapiro.test(data[[variable]])
     
-    # Realiza la prueba de homogeneidad de varianzas (Levene) entre la variable actual y IMDB_Rating_Categoria
-    homogeneity_test <- leveneTest(data[[variable]], data$IMDB_Rating_Categoria)
+    # Realiza la prueba de homogeneidad de varianzas (Levene) entre la variable actual y IMDB_Rating_mod
+    homogeneity_test <- leveneTest(data[[variable]], data$IMDB_Rating_mod)
     
     # Imprime los resultados de las pruebas para la variable actual
     cat("Variable:", variable, "\n")
@@ -235,12 +235,12 @@ cor.test(data$No_of_Votes, data$IMDB_Rating, method="spearman")
 cor.test(data$Gross, data$IMDB_Rating, method="spearman")
 cor.test(data$Released_Year, data$IMDB_Rating, method="spearman")
 
-# Seleccionar todas las variables excepto "Series_Title"
-selected_vars <- data %>% select(-Series_Title,-IMDB_Rating, -IMDB_Rating_Categoria )
+# Seleccionar todas las variables excepto "Movies_Title"
+selected_vars <- data %>% select(-Movies_Title,-IMDB_Rating, -IMDB_Rating_mod)
 
 # Realizar la prueba de Kruskal-Wallis para cada variable
 kruskal_results <- lapply(selected_vars, function(var) {
-  kruskal.test(var ~ IMDB_Rating_Categoria, data = data)
+  kruskal.test(var ~ IMDB_Rating_mod, data = data)
 })
 
 # Imprimir los resultados
