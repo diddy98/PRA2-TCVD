@@ -254,9 +254,17 @@ for (i in seq_along(kruskal_results)) {
 }
 
 
-# Realizar una regresión lineal
+# Realizar una regresión lineal 1
 model <- lm(IMDB_Rating ~ Runtime + Gross + Released_Year + No_of_Votes + as.factor(Genre), data = data)
 
 # Obtener los resultados de la regresión
 summary(model)
 
+# Realizar una regresión lineal 2
+model1 <- lm(IMDB_Rating ~ Runtime + Gross + Released_Year + No_of_Votes + as.factor(Genre) + Meta_score, data = data)
+
+# Obtener los resultados de la regresión
+summary(model1)
+
+
+write.csv(data, "imdb_top_1000_mod.csv")
