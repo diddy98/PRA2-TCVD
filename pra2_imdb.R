@@ -4,7 +4,7 @@
 
 # Carga de librerías
 
-librerias <- c('tidyverse', 'ggplot2', 'dplyr', 'corrplot', 'cowplot', 'gridExtra', 'car')
+librerias <- c('tidyverse', 'ggplot2', 'dplyr', 'corrplot', 'cowplot', 'gridExtra', 'car', 'forcats')
 
 lapply(librerias, function(package) {if (!require(package, character.only = TRUE)) {install.packages(package, dependencies = TRUE); library(package, character.only = TRUE)}})
 
@@ -19,6 +19,10 @@ str(data)
 # Primeras 10 líneas del dataset
 
 head(data)
+
+# Dimensiones del dataset
+
+dim(data)
 
 # Adición de una columna con un identificador único para cada película
 
@@ -150,7 +154,7 @@ barplot_lista <- list()
 for (var in categorical_vars) {
   plot <- ggplot(cat_vars, aes(x = .data[[var]])) +
     geom_bar() +
-    labs(title = paste("Bar Plot for", var), x = var, y = "Count")
+    labs(title = "", x = var, y = "Conteo") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
   
   barplot_lista[[var]] <- plot
 }
@@ -168,11 +172,17 @@ categorical_vars1 <- names(cat_vars1)
 barplot_lista1 <- list()
 
 for (var in categorical_vars1) {
-  plot <- ggplot(cat_vars1, aes(x = .data[[var]])) +
-    geom_bar() +
-    labs(title = paste("Bar Plot for", var), x = var, y = "Count")
   
-  barplot_lista1[[var]] <- plot
+  plot  <- cat_vars1 %>% 
+    count(.data[[var]]) %>% 
+    arrange(desc(n)) %>%
+    slice(1:10) %>%
+    ggplot(aes(x = .data[[var]], y = n)) +
+    geom_bar(stat = "identity") + 
+    labs(title = "", x = var, y = "Conteo") + theme(axis.text.x = element_text(angle = 90, vjust = 0.5))
+
+  
+    barplot_lista1[[var]] <- plot
 }
 
 grid1 <- do.call(grid.arrange, c(barplot_lista1, ncol = 2))
@@ -267,4 +277,4 @@ model1 <- lm(IMDB_Rating ~ Runtime + Gross + Released_Year + No_of_Votes + as.fa
 summary(model1)
 
 
-#write.csv(data, "imdb_top_1000_mod.csv")
+# write.csv(data, "imdb_top_1000_mod.csv")
