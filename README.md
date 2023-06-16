@@ -10,7 +10,7 @@ El proyecto se basa en el análisis del conjunto de datos *IMDB Dataset* - dispo
 
 ### Requerimientos
 
-El análisis de datos se ha realizado con R Studio, por lo que es indispensable tener instalado este programa (y el programa base R) para la ejecución del código. La versión utilizada es la 2023.06.0.
+El análisis de datos se ha realizado con R Studio, por lo que es indispensable tener instalado este programa (y el programa base R) para la ejecución del código. La versión utilizada de RStudio es la 2023.06.0.
 
 En adición, en el código se hacen uso de diversas librerías. En el código se ha incorporado en las primeras líneas una sección donde se comprueba si estas están instaladas en el programa y, en caso de que no, se descargarán e instalarán de manera automática. Para garantizar el correcto funcionamiento de esta sección, es necesario disponer de conexión a la red.
 
