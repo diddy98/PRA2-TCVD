@@ -223,8 +223,8 @@ for (variable in names(data)) {
     cat("Estadístico:", normality_test$statistic, "\n")
     cat("Valor p:", normality_test$p.value, "\n\n")
     cat("Prueba de homogeneidad de varianzas (Levene):\n")
-    cat("Estadístico:", homogeneity_test$statistic, "\n")
-    cat("Valor p:", homogeneity_test$p.value, "\n\n")
+    cat("Estadístico:", homogeneity_test$`F value`[1], "\n")
+    cat("Valor p:", homogeneity_test$`Pr(>F)`[1], "\n\n")
   }
 }
 
@@ -267,4 +267,4 @@ model1 <- lm(IMDB_Rating ~ Runtime + Gross + Released_Year + No_of_Votes + as.fa
 summary(model1)
 
 
-write.csv(data, "imdb_top_1000_mod.csv")
+#write.csv(data, "imdb_top_1000_mod.csv")
