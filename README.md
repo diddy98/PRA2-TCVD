@@ -4,15 +4,15 @@ Repositorio para la Práctica 2 dentro de la asignatura de "Tipología y ciclo d
 
 ## Descripción
 
-El proyecto se basa en el análisis del conjunto de datos obtenido en la Práctica 1, donde se recogieron cerca de 770 películas dentro de la lista  de las 1000 películas mejor valoradas en Filmaffinity con más de 1000 votos.
+El proyecto se basa en el análisis del conjunto de datos *IMDB Dataset* - disponible en https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows - que contiene las 1000 películas más votadas del sitio web IMDB.
 
 ## Cómo empezar
 
 ### Requerimientos
 
-El análisis de datos se ha realizado con R Studio, por lo que es indispensable tener instalado este programa (y el programa base R) para la ejecución del código.
+El análisis de datos se ha realizado con R Studio, por lo que es indispensable tener instalado este programa (y el programa base R) para la ejecución del código. La versión utilizada es la 2023.06.0.
 
-En adición, en el código se hacen uso de diversas librerías. En el código se ha incorporado en las primeras líneas una sección donde se comprueba si estas están instaladas en el programa y, en caso de que no, se descargarán e instalarán de manera automática.
+En adición, en el código se hacen uso de diversas librerías. En el código se ha incorporado en las primeras líneas una sección donde se comprueba si estas están instaladas en el programa y, en caso de que no, se descargarán e instalarán de manera automática. Para garantizar el correcto funcionamiento de esta sección, es necesario disponer de conexión a la red.
 
 
 ### Instalación
@@ -21,7 +21,7 @@ En adición, en el código se hacen uso de diversas librerías. En el código se
 
 ### Ejecución del programa
 
-Para la ejecución del código se debe abrir el fichero "codigo_r" en RStudio y hacer click en el botón "Run".
+Para la ejecución del código se debe abrir el fichero "pra2_imdb" en RStudio y hacer click en el botón "Run".
 
 ## Autores/as
 
